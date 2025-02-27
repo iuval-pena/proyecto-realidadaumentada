@@ -11,9 +11,9 @@
   </head>
   <body style="margin: 0; overflow: hidden;">
     <!-- Escena AR -->
-    <a-scene embedded arjs>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
       <!-- Marcador: Usa el archivo marker.patt para detectar la imagen -->
-      <a-marker type="pattern" url="assets/marker.patt">
+      <a-marker type="pattern" url="https://jeromeetienne.github.io/AR.js/marker-patt/marker.patt">
         <!-- Elemento de video en AR -->        
         <a-video src="assets/video.mp4" width="2" height="1" position="0 0 0" autoplay="true" loop="false" crossOrigin="anonymous"></a-video>
       </a-marker>
