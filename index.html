@@ -2,17 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Regalo AR para Parejas</title>
-    <!-- Carga A-Frame -->
+    <title>Amor aumentado</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- Carga AR.js para A-Frame -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
-      <!-- Usamos el marcador "hiro" por defecto. Puedes personalizarlo si deseas -->
       <a-marker preset="hiro">
-        <!-- Reemplaza "URL_DEL_VIDEO" por la URL directa a tu video (por ejemplo, el enlace de YouTube si es reproducible en iframe) -->
         <a-video src="https://www.youtube.com/watch?v=5BpjAN_vaRA" width="1" height="0.56" position="0 0 0" rotation="-90 0 0"></a-video>
       </a-marker>
       <a-entity camera></a-entity>
