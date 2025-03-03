@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Video Marker</title>
-    <!-- Cargar A-Frame -->
+    <title>Regalo AR para Parejas</title>
+    <!-- Carga A-Frame -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- Alternativa 1: Cargar AR.js desde un repositorio oficial -->
-    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/dist/aframe-ar.js"></script>
+    <!-- Carga AR.js para A-Frame -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <!-- Escena AR -->
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      <!-- Marcador: Usa el archivo marker.patt para detectar la imagen -->
-      <a-marker type="pattern" url="https://jeromeetienne.github.io/AR.js/marker-patt/marker.patt">
-        <!-- Elemento de video en AR -->        
-        <a-video src="assets/video.mp4" width="2" height="1" position="0 0 0" autoplay="true" loop="false" crossOrigin="anonymous"></a-video>
+    <a-scene embedded arjs>
+      <!-- Usamos el marcador "hiro" por defecto. Puedes personalizarlo si deseas -->
+      <a-marker preset="hiro">
+        <!-- Reemplaza "URL_DEL_VIDEO" por la URL directa a tu video (por ejemplo, el enlace de YouTube si es reproducible en iframe) -->
+        <a-video src="URL_DEL_VIDEO" width="1" height="0.56" position="0 0 0" rotation="-90 0 0"></a-video>
       </a-marker>
-
-      <!-- Cámara para la escena AR -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
