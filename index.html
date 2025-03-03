@@ -9,7 +9,18 @@
   <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
       <a-marker preset="hiro">
-        <a-video src="videos/video.mp4" width="1" height="0.56" position="0 0 0" rotation="-90 0 0" autoplay="true" muted="true"></a-video>
+        <a-video 
+        src="videos/video.mp4" 
+        width="1" 
+        height="0.56" 
+        position="0 0 0" 
+        rotation="-90 0 0" 
+        autoplay="true" 
+        muted="true" 
+        playsinline="true"
+        preload="auto">
+        </a-video>
+
 
       </a-marker>
       <a-entity camera></a-entity>
