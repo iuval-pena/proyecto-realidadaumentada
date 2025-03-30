@@ -1,29 +1,62 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Amor aumentado</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  </head>
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-video 
-        src="videos/video.mp4" 
-        width="1" 
-        height="0.56" 
-        position="0 0 0" 
-        rotation="-90 0 0" 
-        autoplay="true" 
-        muted="true" 
-        playsinline="true"
-        preload="auto">
-        </a-video>
+<!-- importar un marco y luego ar.js con funciones de seguimiento de imágenes / basadas en la ubicación -->
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
+<!-- estilo para el cargador -->
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
-</html>
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<body style="margin : 0px; overflow: hidden;">
+ <!-- cargador mínimo se muestra hasta que se cargan los descriptores de imagen. La carga puede tardar un poco según la potencia computacional del dispositivo -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+
+  <!-- escena de fotograma A -->
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- a-nft es el ancla que define una entidad de seguimiento de imágenes -->
+    <!-- en 'url' use la ruta a los descriptores de imagen creados anteriormente. -->
+    <!-- la ruta debe terminar con el nombre sin la extensión, por ejemplo, si el archivo es 'pinball.fset', la ruta debe terminar con 'pinball' -->
+    <a-nft
+      type="nft"
+      url="<path-to-your-image-descriptors>"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <!-- como elemento secundario de la entidad A-NFT, puede definir el contenido que se mostrará. aquí hay una entidad modelo GLTF -->
+      <a-entity
+        gltf-model="<path-to-your-model>"
+        scale="5 5 5"
+        position="50 150 0"
+      >
+      </a-entity>
+    </a-nft>
+    <!-- cámara estática que se mueve de acuerdo con los movimientos del dispositivo -->
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
